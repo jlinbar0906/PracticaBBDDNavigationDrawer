@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_home"
+                    android:icon="@drawable/building"
+                    android:title="Inicio" />
+                <item
+                    android:id="@+id/matricularFragment"
+                    android:icon="@drawable/add_user"
+                    android:title="Matricular alumno" />
+                <item
+                    android:id="@+id/modificarFragment"
+                    android:icon="@drawable/contract"
+                    android:title="Modificar alumno" />
+                <item
+                    android:id="@+id/borrarFragment"
+                    android:icon="@drawable/trash_1"
+                    android:title="Borrar alumno" />
+        <item android:title="Listados">
+        <menu>
+            <item
+                android:id="@+id/listarFragment"
+                android:icon="@drawable/to_do_list"
+                android:title="Listar alumnos">
+            </item>
+        </menu>
+        </item>
+    </group>
+</menu>
