@@ -29,7 +29,6 @@ public class ListarFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         binding = FragmentListarBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
@@ -37,7 +36,7 @@ public class ListarFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        dataBasehelper = new DataBaseHelper(requireContext());
+        dataBasehelper = new DataBaseHelper(getContext());
 
         List<Alumno> listaAlumnos = dataBasehelper.listarAlumnos();
 

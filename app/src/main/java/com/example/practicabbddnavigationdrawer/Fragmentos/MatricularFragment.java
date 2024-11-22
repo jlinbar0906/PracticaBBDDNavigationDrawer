@@ -44,7 +44,7 @@ public class MatricularFragment extends Fragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(binding.getRoot().getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         adapter.addAll(opciones);
         binding.spinner.setAdapter(adapter);
-        dataBaseHelper = new DataBaseHelper(requireContext());
+        dataBaseHelper = new DataBaseHelper(getContext());
 
         binding.buttonAceptar.setOnClickListener(new View.OnClickListener() {
             @Override

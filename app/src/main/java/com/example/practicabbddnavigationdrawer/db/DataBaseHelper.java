@@ -49,7 +49,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
     public long insertarAlumnos(Alumno alumno) {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(DataBaseHelper.COLUMN_DNI, alumno.getDni());
@@ -62,7 +62,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public int actualizarAlumnos(Alumno alumno) {
 
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(DataBaseHelper.COLUMN_NOMBRE, alumno.getNombre());
@@ -77,7 +77,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
     public int borrarAlumnos(Alumno alumno){
 
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = getWritableDatabase();
 
         String where = DataBaseHelper.COLUMN_DNI + " = ?";
         String[] argumentoWhere = {alumno.getDni()};
@@ -87,7 +87,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public List<Alumno> listarAlumnos() {
         List<Alumno> lista = new ArrayList<>();
-        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT dni, nombre, apellidos, sexo FROM alumnos", null);
 
         if (cursor.moveToFirst()) {
