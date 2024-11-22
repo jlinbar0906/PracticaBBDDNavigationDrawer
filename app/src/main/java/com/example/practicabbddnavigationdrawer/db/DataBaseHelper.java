@@ -19,7 +19,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     private DataBaseHelper dbHelper;
 
-
     public static final String TABLE_NAME = "Alumnos";
     public static final String COLUMN_DNI = "dni";
     public static final String COLUMN_NOMBRE = "nombre";

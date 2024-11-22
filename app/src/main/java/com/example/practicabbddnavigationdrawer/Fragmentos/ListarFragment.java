@@ -18,7 +18,6 @@ import com.example.practicabbddnavigationdrawer.db.DataBaseHelper;
 
 import java.util.List;
 
-
 public class ListarFragment extends Fragment {
     private FragmentListarBinding binding;
     private DataBaseHelper dataBasehelper;
@@ -39,14 +38,6 @@ public class ListarFragment extends Fragment {
         dataBasehelper = new DataBaseHelper(getContext());
 
         List<Alumno> listaAlumnos = dataBasehelper.listarAlumnos();
-
-        if (listaAlumnos.isEmpty()) {
-            System.out.println("No hay datos en la base de datos.");
-        } else {
-            for (Alumno alumno : listaAlumnos) {
-                System.out.println("Alumno: " + alumno.getNombre() + " " + alumno.getApellidos());
-            }
-        }
 
         AlumnoAdapter adapter = new AlumnoAdapter(requireContext(), R.layout.alumnos_item, listaAlumnos);
         binding.listView.setAdapter(adapter);
