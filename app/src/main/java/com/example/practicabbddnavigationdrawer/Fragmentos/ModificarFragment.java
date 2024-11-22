@@ -17,13 +17,13 @@ import android.widget.Toast;
 import com.example.practicabbddnavigationdrawer.Alumno;
 import com.example.practicabbddnavigationdrawer.R;
 import com.example.practicabbddnavigationdrawer.databinding.FragmentModificarBinding;
-import com.example.practicabbddnavigationdrawer.db.DataBaseManager;
+import com.example.practicabbddnavigationdrawer.db.DataBaseHelper;
 
 
 public class ModificarFragment extends Fragment {
 
     private FragmentModificarBinding binding;
-    private DataBaseManager dataBaseManager;
+    private DataBaseHelper dataBaseHelper;
 
     public ModificarFragment() {
     }
@@ -43,7 +43,7 @@ public class ModificarFragment extends Fragment {
         ArrayAdapter<String> adapter= new ArrayAdapter<>(binding.getRoot().getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         adapter.addAll(opciones);
         binding.spinner.setAdapter(adapter);
-        dataBaseManager= new DataBaseManager(getContext());
+        dataBaseHelper= new DataBaseHelper(getContext());
 
         binding.buttonAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +56,7 @@ public class ModificarFragment extends Fragment {
 
                 Alumno alumno= new Alumno(dni,nombre,apellidos,sexo);
 
-                int filas=dataBaseManager.actualizarAlumnos(alumno);
+                int filas=dataBaseHelper.actualizarAlumnos(alumno);
 
                 if (filas>0){
                     Toast.makeText(getContext(),"Alumnos modificados",Toast.LENGTH_LONG).show();

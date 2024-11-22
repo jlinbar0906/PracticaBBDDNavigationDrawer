@@ -16,13 +16,13 @@ import android.widget.Toast;
 import com.example.practicabbddnavigationdrawer.Alumno;
 import com.example.practicabbddnavigationdrawer.R;
 import com.example.practicabbddnavigationdrawer.databinding.FragmentBorrarBinding;
-import com.example.practicabbddnavigationdrawer.db.DataBaseManager;
+import com.example.practicabbddnavigationdrawer.db.DataBaseHelper;
 
 
 public class BorrarFragment extends Fragment {
 
     private FragmentBorrarBinding binding;
-    private DataBaseManager dataBaseManager;
+    private DataBaseHelper dataBaseHelper;
 
     public BorrarFragment() {
     }
@@ -37,7 +37,7 @@ public class BorrarFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        dataBaseManager = new DataBaseManager(getContext());
+        dataBaseHelper = new DataBaseHelper(getContext());
 
         binding.buttonAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,7 +46,7 @@ public class BorrarFragment extends Fragment {
                 String dni = binding.editTextDNI.getText().toString();
                 Alumno alumno = new Alumno(dni);
 
-                int filas = dataBaseManager.borrarAlumnos(alumno);
+                int filas = dataBaseHelper.borrarAlumnos(alumno);
 
                 if (filas > 0) {
                     Toast.makeText(getContext(), "Alumnos eliminados", Toast.LENGTH_LONG).show();

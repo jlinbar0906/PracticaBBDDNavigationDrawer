@@ -16,17 +16,14 @@ import android.widget.Toast;
 
 import com.example.practicabbddnavigationdrawer.Alumno;
 import com.example.practicabbddnavigationdrawer.R;
-import com.example.practicabbddnavigationdrawer.databinding.ActivityMainBinding;
 import com.example.practicabbddnavigationdrawer.databinding.FragmentMatricularBinding;
-import com.example.practicabbddnavigationdrawer.db.DataBaseManager;
-
-import java.util.Objects;
+import com.example.practicabbddnavigationdrawer.db.DataBaseHelper;
 
 
 public class MatricularFragment extends Fragment {
 
     private FragmentMatricularBinding binding;
-    private DataBaseManager dataBaseManager;
+    private DataBaseHelper dataBaseHelper;
 
     public MatricularFragment() {
     }
@@ -47,7 +44,7 @@ public class MatricularFragment extends Fragment {
         ArrayAdapter<String> adapter = new ArrayAdapter<>(binding.getRoot().getContext(), androidx.appcompat.R.layout.support_simple_spinner_dropdown_item);
         adapter.addAll(opciones);
         binding.spinner.setAdapter(adapter);
-        dataBaseManager = new DataBaseManager(requireContext());
+        dataBaseHelper = new DataBaseHelper(requireContext());
 
         binding.buttonAceptar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +56,7 @@ public class MatricularFragment extends Fragment {
                 String sexo = binding.spinner.getSelectedItem().toString();
                 Alumno alumno = new Alumno(dni, nombre, apellidos, sexo);
 
-                long valor = dataBaseManager.insertarAlumnos(alumno);
+                long valor = dataBaseHelper.insertarAlumnos(alumno);
 
                 if (valor == -1) {
                     Toast.makeText(getContext(), "Alumno no insertado", Toast.LENGTH_LONG).show();
